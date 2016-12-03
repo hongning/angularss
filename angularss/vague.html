@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.box{
+    width: 500px;
+   
+    margin: auto
+}
+ table{
+    width: 500px;
+    border-collapse: collapse;
+ }
+table td{
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #ccc;
+}
+thead td{
+    font-weight: bold;
+}
+</style>
+<body>
+<div ng-controller="myController" class="box">
+    <p><input type="text" ng-model="TextSearch" placeholder="FirstName">
+        <input type="text" ng-model="SearchText" placeholder="Lastname"></p>
+    <table border="0">
+        <thead>
+            <tr>
+                <td ng-click="col='firstName';desc=!desc">Firstname</td>
+                <td ng-click="col='lastName';desc=!desc">Lastname</td>
+                <td ng-click="col='gender';desc=!desc">gender</td>
+                <td ng-click="col='salary';desc=!desc">Salary</td>
+                <td ng-click="col='salary';desc=!desc">salary</td>
+                <td ng-click="col='birthday';desc=!desc">birthday</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="s in search | filter:searchs:value |orderBy:col:desc">
+                <td>{{s.firstName}}</td>
+                <td>{{s.lastName}}</td>
+                <td>{{s.gender}}</td>
+                <td>{{s.salary | currency:""}}</td>
+                <td>{{s.salary | currency:"$"}}</td>
+                <td>{{s.birthday}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="angular.js"></script>
+<script src="filter.js"></script>
+</body>
+</html>
